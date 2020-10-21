@@ -13,27 +13,30 @@
         </div>
 
         <ul class="nav-links clean-list">
-            <li><a href="">Link 1</a></li>
-            <li><a href="">Link 2</a></li>
-            <li><a href="">Link 3</a></li>
+            <li><a onclick="onOpenGallery()" href="">Gallery</a></li>
+            <li><a href="">About</a></li>
         </ul>
         <!-- <button class="btn" onclick="toggleMenu()"><i class="fas fa-bars fa-2x"></i></button> -->
     </header>
     
     <div class="main-content">
-        <div class="grid-container">
-            <h1>Content goes here</h1>
+        <div class="grid-container ">
         </div>
     </div>
-
+    <div class="meme-editor-container hide">
+        <canvas id="my-canvas" height="500" width="500" onclick="draw(event)"></canvas>
+            <div class="meme-controlls">
+                <input type="text" name="add-txt" class="add-txt" placeholder="enter text" onkeyup="onTxtChange(this)"/>
+            </div>
+    </div>
     </section>
 
 
     <footer class="main-footer">
         <ul class="social-links clean-list">
-            <li><a href="">Link 1</a></li>
-            <li><a href="">Link 2</a></li>
-            <li><a href="">Link 3</a></li>
+            <li><a href="">soc 1</a></li>
+            <li><a href="">soc 2</a></li>
+            <li><a href="">soc 3</a></li>
         </ul>
     </footer>
 

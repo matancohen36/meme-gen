@@ -1,11 +1,28 @@
 'use strict'
-var gImgs;
-var gMemes;
-
 const STORAGE_KEY = 'imgsDB';
+var gImgs;
+var gMemes = {
+    selectedImgId: null,
+    selectedLineIdx: null,
+    lines: [
+        {
+            txt: 'I never eat Falafel',
+            size: 20,
+            align: 'left',
+            color: 'red'
+        }
+    ]
+}
+var gCanvas;
+var gCtx;
+
 
 function init() {
     _createImgs();
+}
+
+function getImgById(imgId) {
+    return gImgs.find(img => img.id === imgId);
 }
 
 
@@ -30,10 +47,10 @@ function _createImgs() {
 
 
 
-function _createImg(url, keywords = []) {
+function _createImg(id, keywords = []) {
     return {
-        id: makeId(),
-        url,
+        id,
+        url: `./imgs/meme-imgs/${id}.jpg`,
         keywords
     }
 }
@@ -43,108 +60,60 @@ function saveImgsToStorage() {
     saveToStorage(STORAGE_KEY, gImgs)
 }
 
-function getBooks() {
-    sort();
-    var fromIdx = gPageIdx * PAGE_SIZE;
-    return gBooks.slice(fromIdx, fromIdx + PAGE_SIZE)
+
+function selectMemeImg(imgId) {
+    const elImgsContainer = document.querySelector('.grid-container');
+    const elEditorContainer = document.querySelector('.meme-editor-container');
+    toggleElement(elImgsContainer, 'hide');
+    toggleElement(elEditorContainer, 'hide')
+    const img = getImgById(+imgId);
+    initCanvas()
+    drawImg(img.url)
+    setSelectedMemeImg(imgId)
 }
 
-function getTitles() {
-    return gTitles;
+
+function setSelectedMemeImg(imgId) {
+    gMemes.selectedImgId = imgId
 }
 
-function deleteBook(bookId) {
-    var bookIdx = gBooks.findIndex(book => {
-        return bookId === book.id
-    })
-    gBooks.splice(bookIdx, 1)
-    _saveBooksToStorage();
+
+function initCanvas() {
+    gCanvas = document.querySelector('#my-canvas');
+    gCtx = gCanvas.getContext('2d')
 }
 
-function addBook(title, price) {
-    var book = _createBook(title)
-    book.price = price;
-    gBooks.unshift(book)
-    _saveBooksToStorage();
+function openGallery() {
+    toggleElement(elImgsContainer, 'hide');
+    toggleElement(elEditorContainer, 'hide');
 }
 
-function getBookById(bookId) {
-    var book = gBooks.find(book => {
-        return bookId === book.id
-    })
-    return book
+function drawText(text, x, y) {
+    gCtx.fillStyle = `${gMemes.lines[0].color}`
+    gCtx.lineWidth = '2'
+    gCtx.font = '48px Ariel'
+    gCtx.textAlign = 'start'
+    gCtx.fillText(text, x, y)
+    gCtx.strokeText(text, x, y)
 }
 
-function updateBook(bookId, newPrice) {
-    var bookIdx = gBooks.findIndex(book => {
-        return book.id === bookId;
-    })
-    gBooks[bookIdx].price = newPrice;
-    _saveBooksToStorage();
+
+function txtChange(input){
+const txt = input.value;
+if (!txt) return;
+gMemes.lines[0].txt = txt
+drawText(txt, 50, 50)
 }
 
-function nextPage() {
-    gPageIdx++;
-    if (gPageIdx * PAGE_SIZE >= gBooks.length) gPageIdx = 0;
 
-}
-function prevPage() {
-    if (gPageIdx === 0) return;
-    gPageIdx--;
-}
-
-function _createMeme() {
-    var gMeme =
-    {
-        selectedImgId: 5,
-        selectedLineIdx: 0,
-        lines: [{
-            txt: 'first try',
-            size: 20,
-            align: 'left',
-            color: 'red'
-        }]
+function drawImg(imgUrl) {
+    const img = new Image();
+    img.src = `${imgUrl}`;
+    img.onload = () => {
+        gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height) 
     }
 }
 
 
 
 
-function _createBooks() {
-    var books = loadFromStorage(STORAGE_KEY)
-    if (!books || !books.length) {
-        books = []
-        for (let i = 0; i < 11; i++) {
-            var title = gTitles[getRandomIntInclusive(0, gTitles.length - 1)]
-            books.push(_createBook(title))
-        }
-    }
-    gBooks = books;
-    _saveBooksToStorage();
-}
-
-function _saveBooksToStorage() {
-    saveToStorage(STORAGE_KEY, gBooks)
-}
-
-
-function updateBookRate(bookId, rate = 0) {
-    var bookIdx = gBooks.findIndex(book => {
-        return book.id === bookId;
-    })
-    if (gBooks[bookIdx].rate === 0 && rate === -1 || gBooks[bookIdx].rate === 10 && rate === 1) return
-    gBooks[bookIdx].rate += rate;
-    _saveBooksToStorage();
-}
-
-function setSort(sortBy) {
-    gSortBy = sortBy;
-}
-function sort() {
-    gBooks.sort((book1, book2) => {
-        if (gSortBy === 'title') {
-            return book1.title.localeCompare(book2.title)
-        }
-        return book1[gSortBy] > book2[gSortBy] ? 1 : -1;
-    })
-}

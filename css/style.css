@@ -29,7 +29,6 @@ a {
 
 .main-header h3 {
     display: inline-block;
-    font-family: Rubik, serif;
 }
 
 .nav-links,
@@ -45,34 +44,47 @@ a {
 /*Gallery-img style*/
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    grid-gap: 2rem;
     margin: 2rem;
 }
 
 
-.card {
-    height: 15rem;
+
+.item {
+    height: 12rem;
 }
 
-.card-img {
-    /* object-fit: cover; */
+.item-img {
     width: 100%;
 }
 
-
-.text-info {
-    margin-inline-start: 46px;
+.hide{
+    visibility: hidden;
+    display: none;
 }
 
 
+
+/* meme-editor */
+
+.meme-editor-container{
+    display: flex;
+    margin: 2rem;
+}
+
+.meme-controlls input {
+    padding: 0.25rem;
+    margin-left: 4rem;
+
+}
+
+/* footer */
 .main-footer {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    /* height: 70px; */
-    /* position: fixed;
-    bottom: 0; */
+  
     width: 100%;
 }
 
