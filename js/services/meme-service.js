@@ -96,15 +96,21 @@ function openGallery() {
 
 function mangeFontSize(diff) {
     gMeme.lines[gLineIdx].size += diff
+    console.log('gMeme.lines[gLineIdx].size :', gMeme.lines[gLineIdx])
+
 }
 
 function drawText(text, x = 50, y = 50) {
-    gCtx.fillStyle = `${gMeme.lines[gLineIdx].color}`
+    gCtx.fillStyle = `${gMeme.lines[gLineIdx].color}`  // buggy
     gCtx.lineWidth = '2'
     gCtx.font = `${gMeme.lines[gLineIdx].size}px Impact`;
     gCtx.textAlign = 'start'
     gCtx.fillText(text, x, y)
     gCtx.strokeText(text, x, y)
+    gCtx.save();
+    renderFocus();
+    gCtx.restore();
+    
 }
 
 function txtChange(input) {
@@ -130,9 +136,6 @@ function drawImg(imgUrl) {
     }
 }
 
-
-
-
 function renderCanvas() {
     const meme = getCurrMeme();
     const img = new Image();
@@ -140,7 +143,19 @@ function renderCanvas() {
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
         drawLines();
+        gCtx.beginPath();
     }
+}
+
+
+function renderFocus() {
+    const { x, y ,size} = gMeme.lines[gLineIdx]
+    gCtx.strokeStyle = 'black';
+    gCtx.stroke();
+    gCtx.beginPath();
+    gCtx.rect(x - 20, y + 5, x+390, y - (y+size + 5))
+    gCtx.restore();
+
 }
 
 function drawLines() {
@@ -148,18 +163,14 @@ function drawLines() {
     lines.forEach(line => drawText(line.txt, line.x, line.y))
 }
 
-
 function managePosition(diff) {
     gMeme.lines[gLineIdx].y += diff
-    renderCanvas()
 }
-
 
 function manageLines() {
-    gLineIdx ++;
-    if (gMeme.lines.length <= gLineIdx ) gLineIdx = 0;
+    gLineIdx++;
+    if (gMeme.lines.length <= gLineIdx) gLineIdx = 0;
 }
-
 
 function addLine() {
     gMeme.lines.push({
@@ -171,4 +182,6 @@ function addLine() {
         y: 50
     }
     )
+    gLineIdx++;
+
 }

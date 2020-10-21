@@ -30,18 +30,18 @@ function onOpenGallery() {
 
 function onMangeFontSize(diff) {
     mangeFontSize(diff)
-    const y = gMeme.lines[gLineIdx].y
-    const x = gMeme.lines[gLineIdx].x
-    renderCanvas(0, x, y)
+    renderCanvas()
 }
 
 function onManagePosition(diff) {
     managePosition(diff)
+    renderCanvas()
 }
 
 function onManageLines(diff) {
     if (gMeme.lines.length === 1) return
     manageLines(diff)
+    renderCanvas();
 }
 
 
