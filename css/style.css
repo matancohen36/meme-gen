@@ -71,18 +71,30 @@ a {
 .meme-editor-container{
     display: flex;
     margin: 2rem;
+    height: 50rem
 }
 
-.meme-controlls input {
+.meme-settings input{
     padding: 0.25rem;
     margin-left: 4rem;
 
+}
+.font-settings {
+    display: flex;
+    margin-left: 4rem; ;
+}
+
+.canvas-contair{
+    width: 50%;
+}
+.meme-settings{
+    width: 50%;
 }
 
 /* footer */
 .main-footer {
     display: flex;
-    align-items: center;
+    align-items:center;
     justify-content: space-around;
   
     width: 100%;

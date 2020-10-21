@@ -19,16 +19,40 @@ function renderImgs() {
 
 function onSelectMemeImg(imgId) {
     selectMemeImg(imgId);
-    
+
 }
+
+
+
 function onOpenGallery() {
     openGallery();
 }
 
+function onMangeFontSize(diff) {
+    mangeFontSize(diff)
+    const y = gMeme.lines[gLineIdx].y
+    const x = gMeme.lines[gLineIdx].x
+    renderCanvas(0, x, y)
+}
 
+function onManagePosition(diff) {
+    managePosition(diff)
+}
+
+function onManageLines(diff) {
+    if (gMeme.lines.length === 1) return
+    manageLines(diff)
+}
 
 
 function onTxtChange(elInput) {
-   txtChange(elInput)
-   
+    txtChange(elInput)
+    renderCanvas()
+}
+
+
+
+function onAddLine() {
+    addLine();
+    renderCanvas()
 }
