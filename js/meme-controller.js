@@ -81,6 +81,10 @@ function onAddLine() {
     addLine();
     renderCanvas()
 }
+function onDelLine() {
+    delLine();
+    renderCanvas()
+}
 
 function onDownloadMeme(elLink) {
     gIsForDownload = true;

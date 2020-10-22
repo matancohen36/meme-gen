@@ -135,6 +135,7 @@ function drawLines() {
 function txtChange(input) {
     const txt = input.value;
     if (!txt) return;
+    if(!gMeme.lines[gLineIdx]) return
     gMeme.lines[gLineIdx].txt = txt
 }
 
@@ -203,6 +204,14 @@ function addLine() {
     gLineIdx++;
 
 }
+
+function delLine() {
+    if (gMeme.lines.length === 0) return;
+    gMeme.lines.splice(gLineIdx, 1);
+    if (gMeme.lines.length === 0) return gLineIdx === 0;
+    gLineIdx--;
+}
+
 
 function setTxtColor(color) {
     gMeme.lines[gLineIdx].color = color;

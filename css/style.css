@@ -33,8 +33,10 @@ a {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    height: 4.25;
-}
+    height: 4.25rem;
+    
+}   
+
 
 .main-header h3 {
     display: inline-block;
@@ -78,7 +80,7 @@ a {
 /* meme-editor */
 
 .meme-editor-container{
-    background-color: rgb(241, 237, 226);
+    background-color: rgba(241, 237, 226, 0.697);
     display: flex;
     height: 30rem;
     margin: 1.5rem 2rem;
@@ -164,7 +166,17 @@ button{
     height: 1.5rem;
 }
 
-
+.end-prod {
+    display: flex;
+    flex-direction: row;
+}
+.end-prod *{
+    margin-right: 0.25rem;
+    width: 4.5rem;
+    background-color:  #ff8f03;
+    align-items: center;
+    border-radius: 50%;
+}
 
 
 /*Helpers*/
