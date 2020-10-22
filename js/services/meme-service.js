@@ -213,8 +213,7 @@ function setStrokeColor(color) {
 }
 
 function renderInput(){
-    var x = document.querySelector('.add text input')
-    console.log('x:', x)
+    document.querySelector('.inputs .add-txt').value = gMeme.lines[gLineIdx].txt;
 }
 
 
@@ -231,7 +230,12 @@ function downloadMeme(elLink) {
 }
 
 function shareMeme(){
-    
+    var imgContent = gCanvas.toDataURL('image/jpeg');
+    imgContent = encodeURIComponent(imgContent)
+    document.querySelector('.share-container').innerHTML = `
+    <a class="btn" href="https://www.facebook.com/sharer/sharer.php?u=${imgContentl}&t=${imgContent}" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}'); return false;">
+       Share   
+    </a>`
 }
 
 

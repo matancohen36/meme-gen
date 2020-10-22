@@ -28,57 +28,67 @@
     </div>
     <div class="meme-editor-container hide">
         <div class="canvas-container">
-            <canvas id="my-canvas" height="500" width="500" onclick="draw(event)"></canvas>
+            <canvas id="my-canvas" height="400" width="400"></canvas>
         </div>
-        <div class="meme-settings">
-            <input type="text" name="add-txt" class="add-txt" placeholder="enter text" onkeyup="onTxtChange(this)" />
-            <input type="color" name="textColor" id="txt-color" onchange="onSetTxtColor(this)">
-            <input type="color" name="textOutColor" id="txt-color" onchange="onSetStrokeColor(this)">
-            <div class="font-settings">
-                <button class="inc-font" onclick="onMangeFontSize(2)"> +
-                </button>
-                <button class="dec-font" onclick="onMangeFontSize(-2)"> - </button>
-                <div class="position-container">
-                    <button class="move-up" onclick="onManagePosition(-10)">
-                        UP
-                    </button>
-                    <button class="move-down" onclick="onManagePosition(10)">
-                        DOWN
-                    </button>
-                    <button class="add-line" onclick="onAddLine()">
-                        Add Line
-                    </button>
-                    <button class="change-line" onclick="onManageLines()">
-                        Switch Line
-                    </button>
-                    <button class="change-align" onclick="onManageAligns('left')">
-                        start
-                    </button>
-                    <button class="change-align" onclick="onManageAligns('center')">
-                        mid
-                    </button>
-                    <button class="change-align" onclick="onManageAligns('right')">
-                        end
-                    </button>
-                    <button class="share" onclick="onManageAligns('right')">
-                        Share
-                    </button>
-                    <a href="" class="download" onclick="onDownloadMeme(this)" download="meme.jpg">
-                        Download
-                    </a>
-
-                    <button class="save" onclick="onSaveMeme('right')">
-                        Save
-                    </button>
-                </div>
+        <div class="meme-settings flex">
+            <div class="inputs">
+                <input type="text" name="add-txt" class="add-txt" placeholder="enter text"
+                    onkeyup="onTxtChange(this)" />
+                <input type="color" name="textColor" id="txt-color" onchange="onSetTxtColor(this)">
+                <input type="color" name="textOutColor" id="txt-color" onchange="onSetStrokeColor(this)">
             </div>
+            <div class="position-container flex">
+                <button class="move-up btn" onclick="onManagePosition(-10)">
+                    <img src="./imgs/icons/uparrow.png" class="editor-btn">
+                </button>
+                <button class="move-down" onclick="onManagePosition(10)">
+                    <img src="./imgs/icons/downarrow.png" class="editor-btn">
+                </button>
+                <button class="add-line" onclick="onAddLine()">
+                    <img src="./imgs/icons/add.png" class="editor-btn">
+                </button>
+                <button class="change-line" onclick="onManageLines()">
+                    <img src="./imgs/icons/switch.png" class="editor-btn">
+                </button>
+            </div>
+            <div class="font-settings">
+                <button class="inc-font" onclick="onMangeFontSize(2)">
+                    <img src="./imgs/icons/inc-font.png" class="editor-btn">
+                </button>
+                <button class="dec-font" onclick="onMangeFontSize(-2)">
+                    <img src="./imgs/icons/dec-font.png" class="editor-btn">
+                </button>
+                <button class="change-align" onclick="onManageAligns('left')">
+                    <img src="./imgs/icons/alignleft.png" class="editor-btn">
+                </button>
+                <button class="change-align" onclick="onManageAligns('center')">
+                    <img src="./imgs/icons/alignmid.png" class="editor-btn">
+                </button>
+                <button class="change-align" onclick="onManageAligns('right')">
+                    <img src="./imgs/icons/alignright.png" class="editor-btn">
+                </button>
+            </div>
+            <div class="end-prod">
+                <button class="share" onclick="onManageAligns('right')">
+                    Share
+                </button>
+                <a href="" class="download" onclick="onDownloadMeme(this)" download="meme.jpg">
+                    Download
+                </a>
+                <button class="save" onclick="onSaveMeme('right')">
+                    Save
+                </button>
+            </div>
+
         </div>
+    </div>
     </div>
     <footer class="main-footer flex">
         <small>Made by Matan Cohen - Sprint2 Coding Academy &copy;</small>
     </footer>
 
     <script src="js/services/util-service.js"></script>
+    <script src="js/services/gallery-service.js"></script>
     <script src="js/services/meme-service.js"></script>
     <script src="js/meme-controller.js"></script>
 </body>
