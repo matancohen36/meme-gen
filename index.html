@@ -29,7 +29,8 @@
     </div>
             <div class="meme-settings">
                 <input type="text" name="add-txt" class="add-txt" placeholder="enter text" onkeyup="onTxtChange(this)"/>
-
+                <input  type="color" name="textColor" id="txt-color" onchange="onSetTxtColor(this)">
+                <input  type="color" name="textOutColor" id="txt-color" onchange="onSetStrokeColor(this)">
                  <div class="font-settings">
                     <button class="inc-font" onclick="onMangeFontSize(2)"> +
                     </button>
@@ -46,6 +47,15 @@
                         </button>
                         <button class="change-line" onclick="onManageLines()">
                             Switch Line
+                        </button>
+                        <button class="change-align" onclick="onManageAligns('left')">
+                            start
+                        </button>
+                        <button class="change-align" onclick="onManageAligns('center')">
+                            mid
+                        </button>
+                        <button class="change-align" onclick="onManageAligns('right')">
+                            end
                         </button>
             </div>
     </div>

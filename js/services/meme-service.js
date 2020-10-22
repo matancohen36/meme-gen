@@ -10,6 +10,7 @@ var gMeme = {
             size: 48,
             align: 'left',
             color: 'red',
+            stroke:'black',
             x: 50,
             y: 50
         }
@@ -96,22 +97,29 @@ function openGallery() {
 
 function mangeFontSize(diff) {
     gMeme.lines[gLineIdx].size += diff
-    console.log('gMeme.lines[gLineIdx].size :', gMeme.lines[gLineIdx])
 
 }
 
-function drawText(text, x = 50, y = 50) {
-    gCtx.fillStyle = `${gMeme.lines[gLineIdx].color}`  // buggy
+function drawText(text, x = 50, y = 50, line = gLineIdx) {
+    console.log()
+    gCtx.fillStyle = `${line.color}`
     gCtx.lineWidth = '2'
-    gCtx.font = `${gMeme.lines[gLineIdx].size}px Impact`;
-    gCtx.textAlign = 'start'
+    gCtx.font = `${line.size}px Impact`; 
+    gCtx.textAlign = line.align
+    gCtx.strokeStyle = line.stroke;
+    gCtx.stroke();
     gCtx.fillText(text, x, y)
     gCtx.strokeText(text, x, y)
     gCtx.save();
     renderFocus();
     gCtx.restore();
-    
 }
+
+function drawLines() {
+    const lines = getLines();
+    lines.forEach(line => drawText(line.txt, line.x, line.y, line));
+}
+
 
 function txtChange(input) {
     const txt = input.value;
@@ -149,19 +157,15 @@ function renderCanvas() {
 
 
 function renderFocus() {
-    const { x, y ,size} = gMeme.lines[gLineIdx]
+    const { x, y, size } = gMeme.lines[gLineIdx]
     gCtx.strokeStyle = 'black';
     gCtx.stroke();
     gCtx.beginPath();
-    gCtx.rect(x - 20, y + 5, x+390, y - (y+size + 5))
+    gCtx.rect(x - 20, y + 10, x + 390, y - (y + size + 5))
     gCtx.restore();
 
 }
 
-function drawLines() {
-    const lines = getLines();
-    lines.forEach(line => drawText(line.txt, line.x, line.y))
-}
 
 function managePosition(diff) {
     gMeme.lines[gLineIdx].y += diff
@@ -178,10 +182,29 @@ function addLine() {
         size: 48,
         align: 'left',
         color: 'red',
+        stroke:'black',
         x: 50,
         y: 50
     }
     )
     gLineIdx++;
 
+}
+
+function setTxtColor(color){
+    gMeme.lines[gLineIdx].color = color;
+}
+
+function setStrokeColor(color){
+    gMeme.lines[gLineIdx].stroke = color;
+}
+
+// function renderInput(){
+//     var x = document.querySelector('.add-text')
+//     console.log('x:', x)
+// }
+
+
+function manageAligns(align){
+    gMeme.lines[gLineIdx].align = align
 }

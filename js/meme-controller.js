@@ -41,15 +41,28 @@ function onManagePosition(diff) {
 function onManageLines(diff) {
     if (gMeme.lines.length === 1) return
     manageLines(diff)
+    // renderInput();
     renderCanvas();
 }
 
+function onManageAligns(align){
+    manageAligns(align);
+}
 
 function onTxtChange(elInput) {
     txtChange(elInput)
     renderCanvas()
 }
 
+function onSetTxtColor(elInput){
+    setTxtColor(elInput.value);
+    renderCanvas();
+}
+
+function onSetStrokeColor(elInput){
+    setStrokeColor(elInput.value);
+    renderCanvas();
+}
 
 
 function onAddLine() {
