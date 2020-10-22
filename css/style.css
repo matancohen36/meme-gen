@@ -6,7 +6,6 @@
 
 body {
     margin: 0;
-    
 }
 
 
@@ -26,6 +25,7 @@ a {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    height: 4.25;
 }
 
 .main-header h3 {
@@ -45,10 +45,9 @@ a {
 /*Gallery-img style*/
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
     grid-gap: 2rem;
-    margin: 2rem;
-    margin-bottom: 5rem;
+    margin: 1rem ;
 }
 
 
@@ -72,8 +71,8 @@ a {
 
 .meme-editor-container{
     display: flex;
+    flex-direction: column;
     margin: 2rem;
-    height: 50rem;
     
 }
 
@@ -87,8 +86,9 @@ a {
     margin-left: 4rem; ;
 }
 
-.canvas-contair{
+.canvas-container{
     width: 50%;
+
 }
 .meme-settings{
     width: 50%;
@@ -96,19 +96,28 @@ a {
 
 /* footer */
 .main-footer {
-    display: flex;
-    align-items:center;
-    justify-content: space-around;
-  
+    background-color: #ff8f03;
+    position: fixed;
+    bottom: 0;
+    left:0;
     width: 100%;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
 }
+
+.main-footer small {
+    text-align: center;
+    padding: 2rem;
+}
+
 
 
 
 
 /*componenets*/
 .main-header {
-    background-color: orange;
+    background-color:  #ff8f03;
 }
 
 
@@ -118,14 +127,8 @@ a {
     font-size: 1.2rem;
 }
 
-.main-footer {
-    background-color: #222;
-    color: white;
-}
 
-.social-links li a {
-    color: white;
-}
+
 
 
 
@@ -145,4 +148,7 @@ a {
     list-style-type: none;
     margin: 0;
     padding: 0;
+}
+.flex {
+    display: flex;
 }

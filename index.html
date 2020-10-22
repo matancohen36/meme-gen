@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meme Generator</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body onload="onInit()">
     <header class="main-header">
         <div class="brand-logo">
@@ -13,62 +15,68 @@
         </div>
 
         <ul class="nav-links clean-list">
-            <li><a onclick="onOpenGallery()" href="">Gallery</a></li>
+            <li><a onclick="onOpenGallery('gallery')" href="">Gallery</a></li>
+            <li><a onclick="onOpenGallery('memes')" href="">Memes</a></li>
             <li><a href="">About</a></li>
         </ul>
         <!-- <button class="btn" onclick="toggleMenu()"><i class="fas fa-bars fa-2x"></i></button> -->
     </header>
-    
+
     <div class="main-content">
         <div class="grid-container ">
         </div>
     </div>
     <div class="meme-editor-container hide">
         <div class="canvas-container">
-        <canvas id="my-canvas" height="500" width="500" onclick="draw(event)"></canvas>
-    </div>
-            <div class="meme-settings">
-                <input type="text" name="add-txt" class="add-txt" placeholder="enter text" onkeyup="onTxtChange(this)"/>
-                <input  type="color" name="textColor" id="txt-color" onchange="onSetTxtColor(this)">
-                <input  type="color" name="textOutColor" id="txt-color" onchange="onSetStrokeColor(this)">
-                 <div class="font-settings">
-                    <button class="inc-font" onclick="onMangeFontSize(2)"> +
+            <canvas id="my-canvas" height="500" width="500" onclick="draw(event)"></canvas>
+        </div>
+        <div class="meme-settings">
+            <input type="text" name="add-txt" class="add-txt" placeholder="enter text" onkeyup="onTxtChange(this)" />
+            <input type="color" name="textColor" id="txt-color" onchange="onSetTxtColor(this)">
+            <input type="color" name="textOutColor" id="txt-color" onchange="onSetStrokeColor(this)">
+            <div class="font-settings">
+                <button class="inc-font" onclick="onMangeFontSize(2)"> +
+                </button>
+                <button class="dec-font" onclick="onMangeFontSize(-2)"> - </button>
+                <div class="position-container">
+                    <button class="move-up" onclick="onManagePosition(-10)">
+                        UP
                     </button>
-                    <button class="dec-font" onclick="onMangeFontSize(-2)"> - </button>
-                    <div class="position-container">
-                        <button class="move-up" onclick="onManagePosition(-10)">
-                            UP
-                        </button>
-                        <button class="move-down" onclick="onManagePosition(10)">
-                            DOWN
-                        </button>
-                        <button class="add-line" onclick="onAddLine()">
-                            Add Line
-                        </button>
-                        <button class="change-line" onclick="onManageLines()">
-                            Switch Line
-                        </button>
-                        <button class="change-align" onclick="onManageAligns('left')">
-                            start
-                        </button>
-                        <button class="change-align" onclick="onManageAligns('center')">
-                            mid
-                        </button>
-                        <button class="change-align" onclick="onManageAligns('right')">
-                            end
-                        </button>
+                    <button class="move-down" onclick="onManagePosition(10)">
+                        DOWN
+                    </button>
+                    <button class="add-line" onclick="onAddLine()">
+                        Add Line
+                    </button>
+                    <button class="change-line" onclick="onManageLines()">
+                        Switch Line
+                    </button>
+                    <button class="change-align" onclick="onManageAligns('left')">
+                        start
+                    </button>
+                    <button class="change-align" onclick="onManageAligns('center')">
+                        mid
+                    </button>
+                    <button class="change-align" onclick="onManageAligns('right')">
+                        end
+                    </button>
+                    <button class="share" onclick="onManageAligns('right')">
+                        Share
+                    </button>
+                    <a href="" class="download" onclick="onDownloadMeme(this)" download="meme.jpg">
+                        Download
+                    </a>
+
+                    <button class="save" onclick="onSaveMeme('right')">
+                        Save
+                    </button>
+                </div>
             </div>
+        </div>
     </div>
-    
-
-
-    <!-- <footer class="main-footer">
-        <ul class="social-links clean-list">
-            <li><a href="">soc 1</a></li>
-            <li><a href="">soc 2</a></li>
-            <li><a href="">soc 3</a></li>
-        </ul>
-    </footer> -->
+    <footer class="main-footer flex">
+        <small>Made by Matan Cohen - Sprint2 Coding Academy &copy;</small>
+    </footer>
 
     <script src="js/services/util-service.js"></script>
     <script src="js/services/meme-service.js"></script>

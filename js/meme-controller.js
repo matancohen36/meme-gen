@@ -17,15 +17,27 @@ function renderImgs() {
     elImgsContainer.innerHTML = strHtmls.join('');
 }
 
+
+// function renderSavedMemes() {
+//     const elImgsContainer = document.querySelector('.grid-container');
+//     const memes = getMemesForDisplay();
+//     const strHtmls = memes.map(meme => {
+//         return `<div class="item" onclick="selectMemeImg('${meme.id}')">
+//                     <img class="item-img" src="${img.url}"  />
+//                 </div>
+//         `
+//     })
+//     elImgsContainer.innerHTML = strHtmls.join('');
+// }
+
 function onSelectMemeImg(imgId) {
     selectMemeImg(imgId);
-
 }
 
 
 
-function onOpenGallery() {
-    openGallery();
+function onOpenGallery(display) {
+    openGallery(display);
 }
 
 function onMangeFontSize(diff) {
@@ -41,11 +53,11 @@ function onManagePosition(diff) {
 function onManageLines(diff) {
     if (gMeme.lines.length === 1) return
     manageLines(diff)
-    // renderInput();
+    renderInput();
     renderCanvas();
 }
 
-function onManageAligns(align){
+function onManageAligns(align) {
     manageAligns(align);
 }
 
@@ -54,12 +66,12 @@ function onTxtChange(elInput) {
     renderCanvas()
 }
 
-function onSetTxtColor(elInput){
+function onSetTxtColor(elInput) {
     setTxtColor(elInput.value);
     renderCanvas();
 }
 
-function onSetStrokeColor(elInput){
+function onSetStrokeColor(elInput) {
     setStrokeColor(elInput.value);
     renderCanvas();
 }
@@ -68,4 +80,13 @@ function onSetStrokeColor(elInput){
 function onAddLine() {
     addLine();
     renderCanvas()
+}
+
+function onDownloadMeme(elLink) {
+    gIsForDownload = true;
+    downloadMeme(elLink)
+}
+
+function onSaveMeme() {
+    saveMeme(elLink)
 }

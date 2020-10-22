@@ -1,7 +1,9 @@
 'use strict'
 const STORAGE_KEY = 'imgsDB';
 var gImgs;
+var gMemes = [];
 var gMeme = {
+    id: makeId(),
     selectedImgId: null,
     selectedLineIdx: null,
     lines: [
@@ -10,7 +12,7 @@ var gMeme = {
             size: 48,
             align: 'left',
             color: 'red',
-            stroke:'black',
+            stroke: 'white',
             x: 50,
             y: 50
         }
@@ -19,6 +21,7 @@ var gMeme = {
 var gCanvas;
 var gCtx;
 var gLineIdx = 0;
+var gIsForDownload = false;
 
 
 function init() {
@@ -90,9 +93,15 @@ function initCanvas() {
     gCtx = gCanvas.getContext('2d')
 }
 
-function openGallery() {
-    toggleElement(elImgsContainer, 'hide');
-    toggleElement(elEditorContainer, 'hide');
+function openGallery(display = 'gallery') {
+    if (!display === 'memes') {
+        toggleElement(elImgsContainer, 'hide');
+        toggleElement(elEditorContainer, 'hide');
+        renderImgs();
+    }
+        toggleElement(elImgsContainer, 'hide');
+        toggleElement(elEditorContainer, 'hide');
+        renderSavedMemes();
 }
 
 function mangeFontSize(diff) {
@@ -104,15 +113,17 @@ function drawText(text, x = 50, y = 50, line = gLineIdx) {
     console.log()
     gCtx.fillStyle = `${line.color}`
     gCtx.lineWidth = '2'
-    gCtx.font = `${line.size}px Impact`; 
+    gCtx.font = `${line.size}px Impact`;
     gCtx.textAlign = line.align
     gCtx.strokeStyle = line.stroke;
     gCtx.stroke();
     gCtx.fillText(text, x, y)
     gCtx.strokeText(text, x, y)
     gCtx.save();
+    if(!gIsForDownload){
     renderFocus();
     gCtx.restore();
+    }
 }
 
 function drawLines() {
@@ -149,6 +160,7 @@ function renderCanvas() {
     const img = new Image();
     img.src = `./imgs/meme-imgs/${meme.selectedImgId}.jpg`;
     img.onload = () => {
+        gCtx.beginPath();
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
         drawLines();
         gCtx.beginPath();
@@ -157,6 +169,7 @@ function renderCanvas() {
 
 
 function renderFocus() {
+    if(gIsForDownload) return;
     const { x, y, size } = gMeme.lines[gLineIdx]
     gCtx.strokeStyle = 'black';
     gCtx.stroke();
@@ -182,7 +195,7 @@ function addLine() {
         size: 48,
         align: 'left',
         color: 'red',
-        stroke:'black',
+        stroke: 'white',
         x: 50,
         y: 50
     }
@@ -191,20 +204,40 @@ function addLine() {
 
 }
 
-function setTxtColor(color){
+function setTxtColor(color) {
     gMeme.lines[gLineIdx].color = color;
 }
 
-function setStrokeColor(color){
+function setStrokeColor(color) {
     gMeme.lines[gLineIdx].stroke = color;
 }
 
-// function renderInput(){
-//     var x = document.querySelector('.add-text')
-//     console.log('x:', x)
-// }
+function renderInput(){
+    var x = document.querySelector('.add text input')
+    console.log('x:', x)
+}
 
 
-function manageAligns(align){
+function manageAligns(align) {
     gMeme.lines[gLineIdx].align = align
 }
+
+
+
+function downloadMeme(elLink) {
+    renderCanvas();
+    var imgContent = gCanvas.toDataURL('image/jpeg');
+    elLink.href = imgContent
+}
+
+function shareMeme(){
+    
+}
+
+
+function saveMeme() {
+    gMemes.push(gMeme)
+    saveToStorage(STORAGE_KEY, gMemes)
+}
+
+
