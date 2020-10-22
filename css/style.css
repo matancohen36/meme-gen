@@ -5,7 +5,9 @@
 
 
 body {
+    height: 100vh;
     margin: 0;
+    background-color: #FFFDD0;
     
 }
 
@@ -80,7 +82,7 @@ a {
 /* meme-editor */
 
 .meme-editor-container{
-    background-color: rgba(241, 237, 226, 0.697);
+    background-color: rgba(241, 237, 226, 0.178);
     display: flex;
     height: 30rem;
     margin: 1.5rem 2rem;
@@ -105,6 +107,7 @@ a {
 .meme-settings{
     width: 50%;
     flex-direction: column;
+    justify-content: center;
 }
 
 /* footer */
@@ -159,25 +162,47 @@ button{
     display: flex;
     flex-direction: column;
     margin: 0.5rem;
+    border: 2px solid #ff8f03;
+    background-color: #ff8f03;
+    outline: 0;
+    border-radius: 1.25rem;
+
 }
 
 .editor-btn {
     margin: 0.25rem;
     height: 1.5rem;
+    background-color: #ff8f03;
+
 }
 
 .end-prod {
     display: flex;
     flex-direction: row;
+    width: 60%;
 }
-.end-prod *{
+
+.end-prod * {
     margin-right: 0.25rem;
     width: 4.5rem;
     background-color:  #ff8f03;
     align-items: center;
-    border-radius: 50%;
+    border: 2px solid #c2c2c2;
+    outline: 0;
+    border-radius: 1.25rem;
+    color: white;
 }
-
+.end-prod a ,
+.end-prod button{
+display: flex;
+height: 100%;
+width: 8.125rem;
+justify-content: center;
+align-items: center;
+}
+.end-prod a {
+    margin: 0.5rem;
+}
 
 /*Helpers*/
 .clean-list {
