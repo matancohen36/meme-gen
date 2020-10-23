@@ -110,7 +110,6 @@ function mangeFontSize(diff) {
 }
 
 function drawText(text, x = 50, y = 50, line = gLineIdx) {
-    console.log()
     gCtx.fillStyle = `${line.color}`
     gCtx.lineWidth = '2'
     gCtx.font = `${line.size}px Impact`;
@@ -171,6 +170,7 @@ function renderCanvas() {
 
 function renderFocus() {
     if(gIsForDownload) return;
+    if(gMeme.lines.length === 0) return;
     const { x, y, size } = gMeme.lines[gLineIdx]
     gCtx.strokeStyle = 'black';
     gCtx.stroke();
@@ -182,6 +182,7 @@ function renderFocus() {
 
 
 function managePosition(diff) {
+    if(gMeme.lines.length === 0) return;
     gMeme.lines[gLineIdx].y += diff
 }
 
@@ -201,6 +202,7 @@ function addLine() {
         y: 50
     }
     )
+    if(gMeme.lines.length === 1) return gLineIdx = 0;
     gLineIdx++;
 
 }
@@ -208,8 +210,7 @@ function addLine() {
 function delLine() {
     if (gMeme.lines.length === 0) return;
     gMeme.lines.splice(gLineIdx, 1);
-    if (gMeme.lines.length === 0) return gLineIdx === 0;
-    gLineIdx--;
+    if (gLineIdx > 0) gLineIdx--;
 }
 
 

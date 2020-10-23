@@ -2,12 +2,29 @@
     box-sizing: border-box;
 }
 
+/* Fontface */
 
+
+@font-face {
+    font-family: permamarker;
+    src: url(/fonts/PermanentMarker/PermanentMarker-Regular.ttf);
+}
+@font-face {
+    font-family:anton;
+    src: url(/fonts/Anton/Anton-Regular.ttf);
+}
 
 body {
     height: 100vh;
     margin: 0;
-    background-color: #FFFDD0;
+    /* background-color: #FFFDD0; */
+    background-image: linear-gradient(to left top,
+         #ee140a, #ef3c01,
+         #f05400, #f06800,
+         #f07900, #f38900,
+         #f59800, #f6a708,
+         #f9b90b, #facc15,
+         #fade23, #f9f133);
     
 }
 
@@ -22,6 +39,9 @@ a {
     text-decoration: none;
 }
 
+a:visited{
+    color:black
+}
 
 /*Layout*/
 .container {
@@ -29,6 +49,13 @@ a {
     margin: 0 auto;
     align-items: center;
     
+}
+
+.logo {
+    font-family: anton;
+    font-size: 2.5rem;
+    color: #ffffff;
+    font-weight:600;
 }
 
 .main-header {
@@ -82,11 +109,16 @@ a {
 /* meme-editor */
 
 .meme-editor-container{
-    background-color: rgba(241, 237, 226, 0.178);
+    background-image: linear-gradient(to left top,
+    #fdf200, #fbe800,
+    #f9de00, #f7d503,
+    #f4cb07, #f4c50b,
+    #f3be0f, #f2b813,
+    #f3b217, #f4ad1b,
+    #f4a71f, #f4a223);
     display: flex;
     height: 30rem;
-    margin: 1.5rem 2rem;
-    width: 100%;
+    margin: 6.5rem 2rem;
     
 }
 
@@ -99,6 +131,9 @@ a {
 
 .canvas-container{
     width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #my-canvas{
     height: 90%;
@@ -163,7 +198,8 @@ button{
     flex-direction: column;
     margin: 0.5rem;
     border: 2px solid #ff8f03;
-    background-color: #ff8f03;
+    background-image: linear-gradient(to left top, #da6c08, #de6e09, #e2710b, #e6730c, #ea760d, #ef8108, #f48d04, #f99800, #fdae00, #ffc500, #fedb01, #fbf21f);
+
     outline: 0;
     border-radius: 1.25rem;
 
@@ -172,7 +208,6 @@ button{
 .editor-btn {
     margin: 0.25rem;
     height: 1.5rem;
-    background-color: #ff8f03;
 
 }
 
@@ -185,12 +220,12 @@ button{
 .end-prod * {
     margin-right: 0.25rem;
     width: 4.5rem;
-    background-color:  #ff8f03;
     align-items: center;
-    border: 2px solid #c2c2c2;
     outline: 0;
     border-radius: 1.25rem;
-    color: white;
+    font-family: permamarker;
+    border: 2px solid #ff8f03;
+    background-image: linear-gradient(to left top, #da6c08, #de6e09, #e2710b, #e6730c, #ea760d, #ef8108, #f48d04, #f99800, #fdae00, #ffc500, #fedb01, #fbf21f);
 }
 .end-prod a ,
 .end-prod button{
