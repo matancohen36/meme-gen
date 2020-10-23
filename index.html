@@ -9,21 +9,22 @@
 </head>
 
 <body onload="onInit()">
-    <header class="main-header">
-        <div class="logo">
-            MeMeGeN
-        </div>
+    <header class="main-header-container">
+        <div class="main-header flex space-between align-center ">
+            <div class="logo">MeMeGeN</div>
+            
+            <div class="close-menu" onclick="toggleMenu()"></div>
+            <ul class="main-nav clean-list flex">
+                <li><a onclick="onOpenGallery('gallery')" href="">Gallery</a></li>
+                <li><a onclick="onOpenGallery('memes')" href="">Memes</a></li>
+                <li><a href="">About</a></li>
+            </ul>
+            <button class="menu-btn" onclick="toggleMenu()">☰</button>
 
-        <ul class="nav-links clean-list">
-            <li><a onclick="onOpenGallery('gallery')" href="">Gallery</a></li>
-            <!-- <li><a onclick="onOpenGallery('memes')" href="">Memes</a></li> -->
-            <li><a href="">About</a></li>
-        </ul>
-        <!-- <button class="btn" onclick="toggleMenu()"><i class="fas fa-bars fa-2x"></i></button> -->
     </header>
 
     <div class="main-content">
-        <div class="grid-container ">
+        <div class="grid-container">
         </div>
     </div>
     <div class="meme-editor-container hide">
