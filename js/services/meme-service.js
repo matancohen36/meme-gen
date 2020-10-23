@@ -9,7 +9,7 @@ var gMeme = {
     lines: [
         {
             txt: 'enter text',
-            size: 48,
+            size: 56,
             align: 'left',
             color: 'red',
             stroke: 'white',
@@ -99,9 +99,9 @@ function openGallery(display = 'gallery') {
         toggleElement(elEditorContainer, 'hide');
         renderImgs();
     }
-        toggleElement(elImgsContainer, 'hide');
-        toggleElement(elEditorContainer, 'hide');
-        renderSavedMemes();
+    toggleElement(elImgsContainer, 'hide');
+    toggleElement(elEditorContainer, 'hide');
+    renderSavedMemes();
 }
 
 function mangeFontSize(diff) {
@@ -116,12 +116,18 @@ function drawText(text, x = 50, y = 50, line = gLineIdx) {
     gCtx.textAlign = line.align
     gCtx.strokeStyle = line.stroke;
     gCtx.stroke();
+    if (line.align === 'right') {
+        x += 300;
+    }
+    if (line.align === 'center') {
+        x += 150;
+    }
     gCtx.fillText(text, x, y)
     gCtx.strokeText(text, x, y)
     gCtx.save();
-    if(!gIsForDownload){
-    renderFocus();
-    gCtx.restore();
+    if (!gIsForDownload) {
+        renderFocus();
+        gCtx.restore();
     }
 }
 
@@ -134,7 +140,7 @@ function drawLines() {
 function txtChange(input) {
     const txt = input.value;
     if (!txt) return;
-    if(!gMeme.lines[gLineIdx]) return
+    if (!gMeme.lines[gLineIdx]) return
     gMeme.lines[gLineIdx].txt = txt
 }
 
@@ -169,8 +175,8 @@ function renderCanvas() {
 
 
 function renderFocus() {
-    if(gIsForDownload) return;
-    if(gMeme.lines.length === 0) return;
+    if (gIsForDownload) return;
+    if (gMeme.lines.length === 0) return;
     const { x, y, size } = gMeme.lines[gLineIdx]
     gCtx.strokeStyle = 'black';
     gCtx.stroke();
@@ -182,7 +188,7 @@ function renderFocus() {
 
 
 function managePosition(diff) {
-    if(gMeme.lines.length === 0) return;
+    if (gMeme.lines.length === 0) return;
     gMeme.lines[gLineIdx].y += diff
 }
 
@@ -194,7 +200,7 @@ function manageLines() {
 function addLine() {
     gMeme.lines.push({
         txt: 'enter text',
-        size: 48,
+        size: 56,
         align: 'left',
         color: 'red',
         stroke: 'white',
@@ -202,7 +208,7 @@ function addLine() {
         y: 50
     }
     )
-    if(gMeme.lines.length === 1) return gLineIdx = 0;
+    if (gMeme.lines.length === 1) return gLineIdx = 0;
     gLineIdx++;
 
 }
@@ -222,7 +228,7 @@ function setStrokeColor(color) {
     gMeme.lines[gLineIdx].stroke = color;
 }
 
-function renderInput(){
+function renderInput() {
     document.querySelector('.inputs .add-txt').value = gMeme.lines[gLineIdx].txt;
 }
 
@@ -239,7 +245,7 @@ function downloadMeme(elLink) {
     elLink.href = imgContent
 }
 
-function shareMeme(){
+function shareMeme() {
     var imgContent = gCanvas.toDataURL('image/jpeg');
     imgContent = encodeURIComponent(imgContent)
     document.querySelector('.share-container').innerHTML = `
