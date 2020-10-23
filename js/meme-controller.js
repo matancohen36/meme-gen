@@ -94,3 +94,7 @@ function onDownloadMeme(elLink) {
 function onSaveMeme() {
     saveMeme(elLink)
 }
+
+function toggleMenu() {
+    document.body.classList.toggle('menu-open');
+}

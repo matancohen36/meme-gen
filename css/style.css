@@ -226,7 +226,7 @@ display:none;
     outline: 0;
     border: 0;
 }
-button{
+.meme-settings button{
     background: transparent;
     outline: 0;
     border: 0;  
@@ -235,7 +235,6 @@ button{
     margin: 0.5rem;
     border: 2px solid #ff8f03;
     background-image: linear-gradient(to left top, #da6c08, #de6e09, #e2710b, #e6730c, #ea760d, #ef8108, #f48d04, #f99800, #fdae00, #ffc500, #fedb01, #fbf21f);
-
     outline: 0;
     border-radius: 1.25rem;
 
@@ -310,17 +309,93 @@ align-items: center;
     }
 
     .meme-editor-container {
-        display: flex;
         flex-direction: column;
-        height: 30rem;
+        height: 45rem;
         margin: 0.5rem 0.5rem;
-        justify-content: center;
         align-items: center;
         width: 100%;
-}
-.canvas-container {
+    }
+    .canvas-container {
     width: 100%; 
-   display: flex;
-   justify-content: center;
+    }
+    .main-header{
+        height: 6.125rem;
+        margin-bottom: 2rem;
+    }
+    .logo {
+        font-size: 1.5rem;
+    }
+    .main-header{
+        height: 4.125rem;
+        width: 92%;
+    }
+    .main-header .menu-btn{
+        height: 3.5rem;
+        width: 3.5rem;
+        font-size: 2.5rem;
+        background: transparent;
+        border: none;
+    }
+    .main-header-container .menu-btn{
+        display:block;
+        }
+    .main-header .main-nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        background-color: #FFFDD0;
+        opacity: 0.8;
+        border-left: 1px solid #f0f0f0;
+        flex-direction: column;
+        width: 60%;
+        text-align: center;
+        transform: translateX(100%);
+        transition: transform .8s; 
+    }
+
+    body.menu-open .main-header .main-nav {
+        transform: translateX(0%);
+    }
+    body.menu-open  .main-header-container .menu-btn{
+        display:none;
+        }
+    .main-header .main-nav li {
+    
+        height:6rem;
+    }
+    .main-header .main-nav a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .main-header .close-menu {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .3);
+    color: #fff;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .8s;
+    }
+
+    body.menu-open .close-menu {
+    visibility: visible;
+    opacity: 1;
+    }
+}
+
+@media (max-width: 450px) {
+      
+.grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+    grid-gap: 1rem;
+    margin: 1rem;
 }
 }
