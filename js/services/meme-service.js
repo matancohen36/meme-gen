@@ -11,7 +11,7 @@ var gMeme = {
             txt: 'enter text',
             size: 56,
             align: 'left',
-            color: 'red',
+            color: 'blue',
             stroke: 'white',
             x: 50,
             y: 50
@@ -111,16 +111,16 @@ function mangeFontSize(diff) {
 
 function drawText(text, x = 50, y = 50, line = gLineIdx) {
     gCtx.fillStyle = `${line.color}`
-    gCtx.lineWidth = '2'
+    gCtx.lineWidth = '1'
     gCtx.font = `${line.size}px Impact`;
     gCtx.textAlign = line.align
     gCtx.strokeStyle = line.stroke;
     gCtx.stroke();
     if (line.align === 'right') {
-        x += 300;
+        x += 375;
     }
     if (line.align === 'center') {
-        x += 150;
+        x += 190;
     }
     gCtx.fillText(text, x, y)
     gCtx.strokeText(text, x, y)
@@ -202,7 +202,7 @@ function addLine() {
         txt: 'enter text',
         size: 56,
         align: 'left',
-        color: 'red',
+        color: 'blue',
         stroke: 'white',
         x: 50,
         y: 50

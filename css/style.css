@@ -156,9 +156,40 @@ display:none;
     margin: 6.5rem 2rem;
     
 }
+.meme-editor-container *{
+    margin:0.25rem
+}
 
 .meme-settings input:first-child{
+    /* outline: none;
+    border: none;
     height:2rem;
+    width: 15rem;
+    border-radius: 2rem; */
+    width: 300px;
+    height: 80px;
+    font-family: Lato;
+    font-size: 1.8rem;
+    background-color: transparent;
+    border: none;
+    border-top: 3px solid #000000;
+    border-bottom: 3px solid#000000;
+    outline: none;
+    color:#000000;
+    padding-left: 10px;
+}
+.inputs {
+    align-items: center;
+    display: flex;
+}
+
+input[type=color] {
+    width: 3rem;
+    height: 3rem; 
+    border-radius: 50%;
+    border:none;
+    overflow: hidden;
+    background-color: transparent;
 }
 .font-settings {
     display: flex;
@@ -171,7 +202,7 @@ display:none;
     align-items: center;
 }
 #my-canvas{
-    height: 90%;
+    height: 95%;
     width: 80%;
 }
 .meme-settings{
@@ -298,7 +329,17 @@ align-items: center;
 
 
 /* medium */
-
+@media (max-width: 940px) {
+    .end-prod{
+        width: 100%;
+    }
+    #my-canvas{
+        width: 90%;
+    }
+    .meme-settings input:first-child{
+        width:15rem;
+    }
+}
 /* mobile */
 @media (max-width: 720px) {
     .meme-settings {
@@ -397,5 +438,9 @@ align-items: center;
     grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
     grid-gap: 1rem;
     margin: 1rem;
+    
 }
+    .main-footer{
+        height:5rem;
+    }
 }
