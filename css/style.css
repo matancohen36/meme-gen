@@ -7,19 +7,19 @@
 
 @font-face {
     font-family: permamarker;
-    src: url(/fonts/PermanentMarker/PermanentMarker-Regular.ttf);
+    src: url('../fonts/PermanentMarker/PermanentMarker-Regular.ttf');
 }
 @font-face {
     font-family:anton;
-    src: url(/fonts/Anton/Anton-Regular.ttf);
+    src: url('../fonts/Anton/Anton-Regular.ttf');
 }
 @font-face {
     font-family:Grenze;
-    src: url(/fonts/Grenze_Gotisch/GrenzeGotisch-Black.ttf);
+    src: url('../fonts/Grenze_Gotisch/GrenzeGotisch-Black.ttf');
 }
 @font-face {
     font-family:vampiro;
-    src: url(/fonts/Vampirone/VampiroOne-Regular.ttf);
+    src: url('../fonts/Vampirone/VampiroOne-Regular.ttf');
 }
 
 body {
