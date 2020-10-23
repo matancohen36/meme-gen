@@ -77,10 +77,14 @@ function onSetStrokeColor(elInput) {
 }
 function onStartDrag(ev) {
     gIsDragging = true;
-   
+}
+function onFontChange(ev) {
+    fontChange(ev.value);
+    renderCanvas();
 }
 
 function onEndDrag() {
+    ev.preventDefault();
     gIsDragging = false;
     gCtx.closePath();
 }
