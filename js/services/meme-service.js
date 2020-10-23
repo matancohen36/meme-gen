@@ -10,6 +10,7 @@ var gMeme = {
         {
             txt: 'enter text',
             size: 56,
+            font: "Impact",
             align: 'left',
             color: 'blue',
             stroke: 'white',
@@ -109,10 +110,14 @@ function mangeFontSize(diff) {
 
 }
 
+function fontChange(font) {
+    gMeme.lines[gCurrLineIdx].font = font;
+}
+
 function drawText(text, x = 50, y = 50, line = gCurrLineIdx) {
     gCtx.fillStyle = `${line.color}`
     gCtx.lineWidth = '1'
-    gCtx.font = `${line.size}px Impact`;
+    gCtx.font = `${line.size}px ${line.font}`;
     gCtx.textAlign = line.align
     gCtx.strokeStyle = line.stroke;
     gCtx.stroke();
