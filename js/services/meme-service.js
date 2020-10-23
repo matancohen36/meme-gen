@@ -245,13 +245,14 @@ function downloadMeme(elLink) {
     elLink.href = imgContent
 }
 
-function shareMeme() {
+function shareMeme(elLink) {
     var imgContent = gCanvas.toDataURL('image/jpeg');
     imgContent = encodeURIComponent(imgContent)
-    document.querySelector('.share-container').innerHTML = `
-    <a class="btn" href="https://www.facebook.com/sharer/sharer.php?u=${imgContentl}&t=${imgContent}" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}'); return false;">
-       Share   
-    </a>`
+    elLink.href = `https://www.facebook.com/sharer/sharer.php?u=${imgContent}&t=${imgContent}`
+    // document.querySelector('.end prod .share').innerHTML = `
+    // <a class="btn" href="https://www.facebook.com/sharer/sharer.php?u=${imgContentl}&t=${imgContent}" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${imgContent}&t=${imgContent}'); return false;">
+    //    Share   
+    // </a>`
 }
 
 

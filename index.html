@@ -12,7 +12,7 @@
     <header class="main-header-container">
         <div class="main-header flex space-between align-center ">
             <div class="logo">MeMeGeN</div>
-            
+
             <div class="close-menu" onclick="toggleMenu()"></div>
             <ul class="main-nav clean-list flex">
                 <li><a onclick="onOpenGallery('gallery')" href="">Gallery</a></li>
@@ -32,11 +32,12 @@
             <canvas id="my-canvas" height="500" width="500"></canvas>
         </div>
         <div class="meme-settings flex">
-            <div class="inputs">
-                <input type="text" name="add-txt" class="add-txt" placeholder="enter text"
-                    onkeyup="onTxtChange(this)" />
+            <div class="color-input">
                 <input type="color" name="textColor" id="txt-color" onchange="onSetTxtColor(this)">
                 <input type="color" name="textOutColor" id="txt-color" onchange="onSetStrokeColor(this)">
+            </div>
+            <div class="text-input">
+                <input type="text" name="add-txt" class="add-txt" placeholder="enter text" onkeyup="onTxtChange(this)" />
             </div>
             <div class="position-container flex">
                 <button class="move-up " onclick="onManagePosition(-10)">
@@ -73,16 +74,15 @@
                 </button>
             </div>
             <div class="end-prod">
-                <button class="share" onclick="onManageAligns('right')">
+                <a href="#" class="share" onclick="onShareMeme(this)" target="_blank" onclick"">
                     Share
-                </button>
+                </a>
                 <a href="" class="download" onclick="onDownloadMeme(this)" download="meme.jpg">
                     Download
                 </a>
-                    <button class="save" onclick="onSaveMeme('right')">
-                        Save
-                    </button>
-                
+                <button class="save" onclick="onSaveMeme()">
+                    Save
+                </button>
             </div>
 
         </div>

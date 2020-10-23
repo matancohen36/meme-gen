@@ -21,10 +21,13 @@
     font-family:vampiro;
     src: url('../fonts/Vampirone/VampiroOne-Regular.ttf');
 }
+@font-face {
+    font-family:henny;
+    src: url('../fonts/hennypenny/HennyPenny-Regular.ttf');
+}
 
 body {
-    height: 100vh;
-    margin: 0;
+    margin:0 auto;;
     background-image: linear-gradient(to left top,
          #ee140a, #ef3c01,
          #f05400, #f06800,
@@ -160,7 +163,7 @@ display:none;
     margin:0.25rem
 }
 
-.meme-settings input:first-child{
+.meme-settings input{
     /* outline: none;
     border: none;
     height:2rem;
@@ -168,7 +171,7 @@ display:none;
     border-radius: 2rem; */
     width: 300px;
     height: 80px;
-    font-family: Lato;
+    font-family: henny, sans-serif;
     font-size: 1.8rem;
     background-color: transparent;
     border: none;
@@ -178,9 +181,16 @@ display:none;
     color:#000000;
     padding-left: 10px;
 }
-.inputs {
+.text-input {
     align-items: center;
     display: flex;
+}
+.color-input{
+    display: flex;
+    flex-direction: row;
+    width : 10rem;
+    border-radius: 50%;
+
 }
 
 input[type=color] {
@@ -190,6 +200,8 @@ input[type=color] {
     border:none;
     overflow: hidden;
     background-color: transparent;
+    display: flex;
+    flex-direction: column;
 }
 .font-settings {
     display: flex;
@@ -296,8 +308,8 @@ input[type=color] {
 .end-prod a ,
 .end-prod button{
 display: flex;
-height: 100%;
-width: 8.125rem;
+height: 150%;
+width: 6.125rem;
 justify-content: center;
 align-items: center;
 }
@@ -336,11 +348,13 @@ align-items: center;
     #my-canvas{
         width: 90%;
     }
-    .meme-settings input:first-child{
-        width:15rem;
+    .meme-settings input{
+        width:20rem;
     }
 }
-/* mobile */
+
+
+/* narrow */
 @media (max-width: 720px) {
     .meme-settings {
         width: 100%;
@@ -432,15 +446,30 @@ align-items: center;
     }
 }
 
+/* extra - narrow */
 @media (max-width: 450px) {
-      
-.grid-container {
+    .main-header {
+        height: 5.125rem;
+        margin-bottom: 0rem;
+    }
+    .logo{
+        font-size: 1.5rem;
+    }
+    .grid-container {
     grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
     grid-gap: 1rem;
     margin: 1rem;
     
-}
+    }
     .main-footer{
         height:5rem;
+    }
+    .meme-editor-container {
+        flex-direction: column;
+        height: 37rem;
+        margin: 0 auto;
+        align-items: center;
+        width: 100%;
+        height:70%
     }
 }
