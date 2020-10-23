@@ -75,8 +75,14 @@ function onSetStrokeColor(elInput) {
     setStrokeColor(elInput.value);
     renderCanvas();
 }
+function onStartDrag() {
+    gIsDragging = true;
+}
 
-
+function onEndDrag() {
+    gIsDragging = false;
+    gCtx.closePath();
+}
 function onAddLine() {
     addLine();
     renderCanvas()
@@ -101,3 +107,4 @@ function onShareMeme(elLink) {
 function toggleMenu() {
     document.body.classList.toggle('menu-open');
 }
+

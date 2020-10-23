@@ -29,7 +29,7 @@
     </div>
     <div class="meme-editor-container hide">
         <div class="canvas-container">
-            <canvas id="my-canvas" height="500" width="500"></canvas>
+            <canvas id="my-canvas" height="500" width="500" onmousedown="onStartDrag(event)" onmousemove="drag(event)" onmouseup="onEndDrag(event)"></canvas>
         </div>
         <div class="meme-settings flex">
             <div class="color-input">
