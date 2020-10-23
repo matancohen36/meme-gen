@@ -49,7 +49,7 @@ a {
     text-decoration: none;
 }
 
-a:visited{
+:visited{
     color:black
 }
 
