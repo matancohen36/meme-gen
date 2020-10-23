@@ -75,8 +75,9 @@ function onSetStrokeColor(elInput) {
     setStrokeColor(elInput.value);
     renderCanvas();
 }
-function onStartDrag() {
+function onStartDrag(ev) {
     gIsDragging = true;
+   
 }
 
 function onEndDrag() {

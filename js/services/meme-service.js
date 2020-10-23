@@ -234,15 +234,6 @@ function manageAligns(align) {
     gMeme.lines[gCurrLineIdx].align = align
 }
 
-function drag(ev) {
-    if (!gIsDragging) return;
-    const { offsetX, offsetY , type } = ev;
-    if (type === 'mousemove') {
-        gMeme.lines[gCurrLineIdx].x = offsetX
-        gMeme.lines[gCurrLineIdx].y = offsetY
-        renderCanvas();
-    }
-}
 
 function downloadMeme(elLink) {
     renderCanvas();
@@ -267,3 +258,18 @@ function saveMeme() {
 }
 
 
+function drag(ev) {
+    if (!gIsDragging) return;
+    if (ev.touches) {
+        const { clientY,clientX } = ev.touches[0];
+        var rect = document.querySelector('#my-canvas').getBoundingClientRect();
+        gMeme.lines[gCurrLineIdx].x = clientX - rect.left;
+        gMeme.lines[gCurrLineIdx].y = clientY - rect.top;
+        renderCanvas();
+    } else {
+        const { offsetX, offsetY } = ev;
+        gMeme.lines[gCurrLineIdx].x = offsetX
+        gMeme.lines[gCurrLineIdx].y = offsetY
+        renderCanvas();
+    }
+}

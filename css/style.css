@@ -169,7 +169,7 @@ display:none;
     height:2rem;
     width: 15rem;
     border-radius: 2rem; */
-    width: 300px;
+    width: 20rem;
     height: 80px;
     font-family: henny, sans-serif;
     font-size: 1.8rem;
@@ -315,6 +315,21 @@ align-items: center;
 }
 .end-prod a {
     margin: 0.5rem;
+    color: #000000;
+}
+.meme-editor-container .select-font {
+    width: 10rem;
+    background-color:  #da6c08;
+    background-image: linear-gradient(to left top, #da6c08, #de6e09, #e2710b, #e6730c, #ea760d, #ef8108, #f48d04, #f99800, #fdae00, #ffc500, #fedb01, #fbf21f);
+    color:#000000;
+    padding: 12px;
+    border: none;
+    font-size: 20px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    -webkit-appearance: button;
+    appearance: button;
+    outline: none;
+    font-family: permamarker;
 }
 
 /*Helpers*/
