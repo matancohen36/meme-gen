@@ -230,7 +230,7 @@ input[type=color] {
     bottom: 0;
     left:0;
     width: 100%;
-    height: 100px;
+    height: 6.25rem;
     align-items: center;
     justify-content: center;
 }
@@ -477,7 +477,7 @@ align-items: center;
     
     }
     .main-footer{
-        height:2.5rem;
+        position:unset;
     }
     .meme-editor-container {
         flex-direction: column;
@@ -491,7 +491,8 @@ align-items: center;
         width:85%;
     }
     .end-prod{
-        width :90%
+        width :90%;
+        align-items: center;
     }
     .meme-settings input {
     height: 2.5rem;
@@ -499,5 +500,5 @@ align-items: center;
     }
     .meme-settings button {
         margin: 0.25rem;
-}
+    }
 }
