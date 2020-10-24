@@ -477,7 +477,7 @@ align-items: center;
     
     }
     .main-footer{
-        height:5rem;
+        height:2.5rem;
     }
     .meme-editor-container {
         flex-direction: column;
@@ -486,5 +486,15 @@ align-items: center;
         align-items: center;
         width: 100%;
         height:70%
+    }
+    #my-canvas {
+        width:85%;
+    }
+    .end-prod{
+        width :90%
+    }
+    .meme-settings input {
+    height: 2.5rem;
+    font-size: 1rem;
     }
 }
