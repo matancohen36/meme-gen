@@ -52,23 +52,6 @@
                 <input type="text" name="add-txt" class="add-txt" placeholder="enter text"
                     onkeyup="onTxtChange(this)" />
             </div>
-            <div class="position-container flex">
-                <button class="move-up " onclick="onManagePosition(-10)">
-                    <img src="./imgs/icons/uparrow.png" class="editor-btn">
-                </button>
-                <button class="move-down" onclick="onManagePosition(10)">
-                    <img src="./imgs/icons/downarrow.png" class="editor-btn">
-                </button>
-                <button class="add-line" onclick="onAddLine()">
-                    <img src="./imgs/icons/add.png" class="editor-btn">
-                </button>
-                <button class="add-line" onclick="onDelLine()">
-                    <img src="./imgs/icons/trash.png" class="editor-btn">
-                </button>
-                <button class="change-line" onclick="onManageLines()">
-                    <img src="./imgs/icons/switch.png" class="editor-btn">
-                </button>
-            </div>
             <div class="font-settings">
                 <button class="inc-font" onclick="onMangeFontSize(2)">
                     <img src="./imgs/icons/inc-font.png" class="editor-btn">
@@ -84,6 +67,23 @@
                 </button>
                 <button class="change-align" onclick="onManageAligns('right')">
                     <img src="./imgs/icons/alignright.png" class="editor-btn">
+                </button>
+            </div>
+            <div class="position-container flex">
+                <button class="move-up " onclick="onManagePosition(-10)">
+                    <img src="./imgs/icons/uparrow.png" class="editor-btn">
+                </button>
+                <button class="move-down" onclick="onManagePosition(10)">
+                    <img src="./imgs/icons/downarrow.png" class="editor-btn">
+                </button>
+                <button class="add-line" onclick="onAddLine()">
+                    <img src="./imgs/icons/add.png" class="editor-btn">
+                </button>
+                <button class="add-line" onclick="onDelLine()">
+                    <img src="./imgs/icons/trash.png" class="editor-btn">
+                </button>
+                <button class="change-line" onclick="onManageLines()">
+                    <img src="./imgs/icons/switch.png" class="editor-btn">
                 </button>
             </div>
             <div class="end-prod">
