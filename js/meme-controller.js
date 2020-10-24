@@ -52,6 +52,7 @@ function onManagePosition(diff) {
 
 function onManageLines(diff) {
     if (gMeme.lines.length === 1) return
+    renderCanvas();
     manageLines(diff)
     renderInput();
     renderCanvas();
@@ -59,6 +60,8 @@ function onManageLines(diff) {
 
 function onManageAligns(align) {
     manageAligns(align);
+    renderCanvas();
+
 }
 
 function onTxtChange(elInput) {
@@ -80,6 +83,7 @@ function onStartDrag(ev) {
 }
 
 function onFontChange(ev) {
+    renderCanvas();
     fontChange(ev.value);
     renderCanvas();
 }
