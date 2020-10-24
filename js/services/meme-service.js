@@ -145,7 +145,6 @@ function drawLines() {
 
 function txtChange(input) {
     const txt = input.value;
-    if (!txt) return;
     if (!gMeme.lines[gCurrLineIdx]) return
     gMeme.lines[gCurrLineIdx].txt = txt
 }
