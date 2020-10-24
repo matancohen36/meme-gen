@@ -245,7 +245,7 @@ function setStrokeColor(color) {
 }
 
 function renderInput() {
-    document.querySelector('.inputs .add-txt').value = gMeme.lines[gCurrLineIdx].txt;
+    document.querySelector('.text-input .add-txt').value =gMeme.lines[gCurrLineIdx].txt;
 }
 
 
