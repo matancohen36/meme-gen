@@ -35,10 +35,14 @@
         </div>
         
         <div class="meme-settings flex">
-            <div class="helper flex">
+            <div class="font-style flex">
             <div class="color-input">
+                <label for="txt-color">
                     <input type="color" name="textColor" id="txt-color" onchange="onSetTxtColor(this)">
-                    <input type="color" name="textOutColor" id="txt-color" onchange="onSetStrokeColor(this)">
+                </label>
+                <label for="stroke-change">
+                    <input type="color" name="textOutColor" id="stroke-change" onchange="onSetStrokeColor(this)">
+                </label>
                 </div>
                 <select class="select-font" name="select-font" onchange="onFontChange(this)">
                     <option value="Impact">impact</option>
