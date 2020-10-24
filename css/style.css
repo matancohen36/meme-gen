@@ -497,4 +497,7 @@ align-items: center;
     height: 2.5rem;
     font-size: 1rem;
     }
+    .meme-settings button {
+        margin: 0.25rem;
+}
 }
