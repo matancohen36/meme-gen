@@ -93,6 +93,7 @@ function onEndDrag() {
     gCtx.closePath();
 }
 function onAddLine() {
+    gAddlineCount++;
     addLine();
     renderCanvas()
 }

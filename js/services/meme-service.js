@@ -24,6 +24,7 @@ var gCtx;
 var gCurrLineIdx = 0;
 var gIsForDownload = false;
 var gIsDragging = false;
+var gAddlineCount = 0;
 
 function init() {
     _createImgs();
@@ -200,16 +201,29 @@ function manageLines() {
 }
 
 function addLine() {
-    gMeme.lines.push({
-        txt: 'enter text',
-        size: 56,
-        align: 'left',
-        color: 'blue',
-        stroke: 'white',
-        x: 50,
-        y: 50
+    if (gAddlineCount === 1) {
+        gMeme.lines.push({
+            txt: 'enter text',
+            size: 56,
+            align: 'left',
+            color: 'blue',
+            stroke: 'white',
+            x: 50,
+            y: 475
+        }
+        )
+    } else {
+        gMeme.lines.push({
+            txt: 'enter text',
+            size: 56,
+            align: 'left',
+            color: 'blue',
+            stroke: 'white',
+            x: 50,
+            y: 250
+        }
+        )
     }
-    )
     if (gMeme.lines.length === 1) return gCurrLineIdx = 0;
     gCurrLineIdx++;
 
@@ -266,7 +280,7 @@ function saveMeme() {
 function drag(ev) {
     if (!gIsDragging) return;
     if (ev.touches) {
-        const { clientY,clientX } = ev.touches[0];
+        const { clientY, clientX } = ev.touches[0];
         var rect = document.querySelector('#my-canvas').getBoundingClientRect();
         gMeme.lines[gCurrLineIdx].x = clientX - rect.left;
         gMeme.lines[gCurrLineIdx].y = clientY - rect.top;
