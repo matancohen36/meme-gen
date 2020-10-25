@@ -296,6 +296,7 @@ function drag(ev) {
 
 function startDrag(ev) {
     if (gIsDragging) return;
+    if (gMeme.lines.length === 0) return;
     var rect = document.querySelector('#my-canvas').getBoundingClientRect();
     const touchX = (ev.touches) ? ev.clientX - rect.left : ev.offsetX;
     const touchY = (ev.touches) ? ev.clientY - rect.top : ev.offsetY;
@@ -307,7 +308,6 @@ function startDrag(ev) {
     gCurrLineIdx = lineIdx;
     if (gCurrLineIdx === -1 && gMeme.lines.length > 1) gCurrLineIdx *= -1;
     if (gCurrLineIdx === -1 && gMeme.lines.length === 1) gCurrLineIdx = 0;
-    
     renderCanvas();
     gIsDragging = true;
 }
