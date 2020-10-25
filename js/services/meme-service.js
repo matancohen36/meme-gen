@@ -115,7 +115,29 @@ function fontChange(font) {
     gMeme.lines[gCurrLineIdx].font = font;
 }
 
-function drawText(text, x = 50, y = 50, line = gCurrLineIdx) {
+// function drawText(text, x = 50, y = 50, line = gCurrLineIdx) {
+//     gCtx.fillStyle = `${line.color}`
+//     gCtx.lineWidth = '1'
+//     gCtx.font = `${line.size}px ${line.font}`;
+//     gCtx.textAlign = line.align
+//     gCtx.strokeStyle = line.stroke;
+//     gCtx.stroke();
+//     if (line.align === 'right') {
+//         x += 375;
+//     }
+//     if (line.align === 'center') {
+//         x += 190;
+//     }
+//     gCtx.fillText(text, x, y)
+//     gCtx.strokeText(text, x, y)
+//     gCtx.save();
+//     if (!gIsForDownload) {
+//         renderFocus();
+//         gCtx.restore();
+//     }
+// }
+
+function drawText(line = gMeme.lines[gCurrLineIdx]) {
     gCtx.fillStyle = `${line.color}`
     gCtx.lineWidth = '1'
     gCtx.font = `${line.size}px ${line.font}`;
@@ -128,8 +150,8 @@ function drawText(text, x = 50, y = 50, line = gCurrLineIdx) {
     if (line.align === 'center') {
         x += 190;
     }
-    gCtx.fillText(text, x, y)
-    gCtx.strokeText(text, x, y)
+    gCtx.fillText(line.txt, line.x, line.y)
+    gCtx.strokeText(line.txt, line.x, line.y)
     gCtx.save();
     if (!gIsForDownload) {
         renderFocus();
@@ -139,12 +161,13 @@ function drawText(text, x = 50, y = 50, line = gCurrLineIdx) {
 
 function drawLines() {
     const lines = getLines();
-    lines.forEach(line => drawText(line.txt, line.x, line.y, line));
+    lines.forEach(line => drawText(line));
 }
 
 
 function txtChange(input) {
     const txt = input.value;
+    // if (!txt) return 
     if (!gMeme.lines[gCurrLineIdx]) return
     gMeme.lines[gCurrLineIdx].txt = txt
 }
@@ -200,32 +223,19 @@ function manageLines() {
 }
 
 function addLine() {
-    if (gAddlineCount === 1) {
-        gMeme.lines.push({
-            txt: 'enter text',
-            size: 56,
-            align: 'left',
-            color: 'blue',
-            stroke: 'white',
-            x: 50,
-            y: 475
-        }
-        )
-    } else {
-        gMeme.lines.push({
-            txt: 'enter text',
-            size: 56,
-            align: 'left',
-            color: 'blue',
-            stroke: 'white',
-            x: 50,
-            y: 250
-        }
-        )
+    const newLine = {
+        txt: 'enter text',
+        size: 56,
+        align: 'left',
+        color: 'blue',
+        stroke: 'white',
+        x: 50,
+        y: 0
     }
+    newLine.y = (gAddlineCount === 1) ? 475 : 250;
+    gMeme.lines.push(newLine)
     if (gMeme.lines.length === 1) return gCurrLineIdx = 0;
     gCurrLineIdx++;
-
 }
 
 function delLine() {
@@ -244,7 +254,7 @@ function setStrokeColor(color) {
 }
 
 function renderInput() {
-    document.querySelector('.text-input .add-txt').value =gMeme.lines[gCurrLineIdx].txt;
+    document.querySelector('.text-input .add-txt').value = gMeme.lines[gCurrLineIdx].txt;
 }
 
 
