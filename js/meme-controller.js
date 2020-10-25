@@ -83,8 +83,7 @@ function onSetStrokeColor(elInput) {
     renderCanvas();
 }
 function onStartDrag(ev) {
-    
-    canvasClicked(ev) 
+    startDrag(ev) 
 }
 
 function onFontChange(ev) {

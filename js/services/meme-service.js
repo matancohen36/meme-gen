@@ -121,22 +121,11 @@ function fontChange(font) {
 function drawText(line) {
     const { x, y, txt, color, align, stroke, font, size } = line
     gCtx.fillStyle = `${color}`
-    gCtx.lineWidth = '3'
+    gCtx.lineWidth = '1'
     gCtx.font = `${size}px ${font}`;
     gCtx.textAlign = align
     gCtx.strokeStyle = stroke;
     gCtx.stroke();
-    // switch (align) {
-    //     case 'right':
-    //         x = 450;
-    //         break;
-    //     case 'center':
-    //         x = 275;
-    //         break;
-    //     case 'left':
-    //         x = 30;
-    //         break;
-    // }
 
     gCtx.fillText(txt, x, y)
     gCtx.strokeText(txt, x, y)
@@ -188,11 +177,14 @@ function renderCanvas() {
 function renderFocus() {
     if (gIsForDownload) return;
     if (gMeme.lines.length === 0) return;
-    const { x, y, size } = gMeme.lines[gCurrLineIdx]
+    const { x, y, size, txt } = gMeme.lines[gCurrLineIdx]
     gCtx.strokeStyle = 'black';
     gCtx.stroke();
     gCtx.beginPath();
-    gCtx.rect(x - 20, y + 10, x + 390, y - (y + size + 5))
+    let measureText = gCtx.measureText(txt);
+    gCtx.rect(x - 2 - measureText.actualBoundingBoxLeft, y - size, measureText.width + 4, size + 10);
+    gCtx.closePath();
+
 }
 
 
@@ -244,6 +236,19 @@ function renderInput() {
 
 function manageAligns(align) {
     gMeme.lines[gCurrLineIdx].align = align
+    var x;
+    switch (align) {
+        case 'right':
+            x = 450;
+            break;
+        case 'center':
+            x = 275;
+            break;
+        case 'left':
+            x = 30;
+            break;
+    }
+    gMeme.lines[gCurrLineIdx].x = x
 }
 
 
@@ -288,7 +293,8 @@ function drag(ev) {
 
 }
 
-function canvasClicked(ev) {
+
+function startDrag(ev) {
     if (gIsDragging) return;
     var rect = document.querySelector('#my-canvas').getBoundingClientRect();
     const touchX = (ev.touches) ? ev.clientX - rect.left : ev.offsetX;
@@ -299,7 +305,9 @@ function canvasClicked(ev) {
         return (touchX > line.x && touchX < line.x + txtWidth) && (touchY < line.y && touchY > line.y - txtHeight);
     })
     gCurrLineIdx = lineIdx;
-    if (gCurrLineIdx === -1) gCurrLineIdx *= -1;
+    if (gCurrLineIdx === -1 && gMeme.lines.length > 1) gCurrLineIdx *= -1;
+    if (gCurrLineIdx === -1 && gMeme.lines.length === 1) gCurrLineIdx = 0;
+    
     renderCanvas();
     gIsDragging = true;
 }
