@@ -115,40 +115,25 @@ function fontChange(font) {
     gMeme.lines[gCurrLineIdx].font = font;
 }
 
-// function drawText(text, x = 50, y = 50, line = gCurrLineIdx) {
-//     gCtx.fillStyle = `${line.color}`
-//     gCtx.lineWidth = '1'
-//     gCtx.font = `${line.size}px ${line.font}`;
-//     gCtx.textAlign = line.align
-//     gCtx.strokeStyle = line.stroke;
-//     gCtx.stroke();
-//     if (line.align === 'right') {
-//         x += 375;
-//     }
-//     if (line.align === 'center') {
-//         x += 190;
-//     }
-//     gCtx.fillText(text, x, y)
-//     gCtx.strokeText(text, x, y)
-//     gCtx.save();
-//     if (!gIsForDownload) {
-//         renderFocus();
-//         gCtx.restore();
-//     }
-// }
 
-function drawText(line = gMeme.lines[gCurrLineIdx]) {
+
+function drawText(line) {
     gCtx.fillStyle = `${line.color}`
     gCtx.lineWidth = '1'
     gCtx.font = `${line.size}px ${line.font}`;
     gCtx.textAlign = line.align
     gCtx.strokeStyle = line.stroke;
     gCtx.stroke();
-    if (line.align === 'right') {
-        x += 375;
-    }
-    if (line.align === 'center') {
-        x += 190;
+    switch (line.align) {
+        case 'right':
+            line.x = 450;
+            break;
+        case 'center':
+            line.x = 275;
+            break;
+        case 'left':
+            line.x = 30;
+            break;
     }
     gCtx.fillText(line.txt, line.x, line.y)
     gCtx.strokeText(line.txt, line.x, line.y)
@@ -167,7 +152,6 @@ function drawLines() {
 
 function txtChange(input) {
     const txt = input.value;
-    // if (!txt) return 
     if (!gMeme.lines[gCurrLineIdx]) return
     gMeme.lines[gCurrLineIdx].txt = txt
 }
@@ -260,6 +244,7 @@ function renderInput() {
 
 function manageAligns(align) {
     gMeme.lines[gCurrLineIdx].align = align
+    console.log('gMeme.lines[gCurrLineIdx].align:', gMeme.lines[gCurrLineIdx].align)
 }
 
 
