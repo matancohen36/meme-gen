@@ -3,6 +3,7 @@
 function onInit() {
     init()
     renderImgs();
+    // renderSavedMemes();
 }
 
 function renderImgs() {
@@ -18,22 +19,25 @@ function renderImgs() {
 }
 
 
-// function renderSavedMemes() {
-//     const elImgsContainer = document.querySelector('.grid-container');
-//     const memes = getMemesForDisplay();
-//     const strHtmls = memes.map(meme => {
-//         return `<div class="item" onclick="selectMemeImg('${meme.id}')">
-//                     <img class="item-img" src="${img.url}"  />
-//                 </div>
-//         `
-//     })
-//     elImgsContainer.innerHTML = strHtmls.join('');
-// }
+function renderSavedMemes() {
+    const elImgsContainer = document.querySelector('.grid-container');
+    const memes = getMemesForDisplay();
+    const strHtmls = memes.map(meme => {
+        return `<div class="item" onclick="selectMeme"('${meme.id}')">
+                    <img class="item-img" src="${meme.url}"  />
+                </div>
+        `
+    })
+    elImgsContainer.innerHTML = strHtmls.join('');
+}
+
+function getMemesForDisplay() {
+    return gMemes;
+}
 
 function onSelectMemeImg(imgId) {
     selectMemeImg(imgId);
 }
-
 
 
 function onOpenGallery(display) {
@@ -79,7 +83,8 @@ function onSetStrokeColor(elInput) {
     renderCanvas();
 }
 function onStartDrag(ev) {
-    gIsDragging = true;
+    
+    canvasClicked(ev) 
 }
 
 function onFontChange(ev) {

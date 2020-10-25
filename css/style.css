@@ -246,10 +246,8 @@ label[for="stroke-change"] {
 /* footer */
 .main-footer {
     background-color: #ff8f03;
-    position: fixed;
-    bottom: 0;
-    left:0;
-    width: 100%;
+    
+   
     /* height: 6.25rem; */
     height: 5vh;
     align-items: center;
@@ -314,6 +312,7 @@ label[for="stroke-change"] {
     display: flex;
     flex-direction: row;
     width: 60%;
+    justify-content: center;
 }
 
 .end-prod * {
@@ -343,9 +342,9 @@ align-items: center;
     background-color:  #da6c08;
     background-image: linear-gradient(to left top, #da6c08, #de6e09, #e2710b, #e6730c, #ea760d, #ef8108, #f48d04, #f99800, #fdae00, #ffc500, #fedb01, #fbf21f);
     color:#000000;
-    padding: 12px;
+    padding: 0.75rem;
     border: none;
-    font-size: 20px;
+    font-size: 1.25rem;
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
     -webkit-appearance: button;
     appearance: button;
@@ -378,6 +377,9 @@ align-items: center;
 
 /* medium */
 @media (max-width: 940px) {
+    main {
+        flex-grow: 0.75;
+    }
     .end-prod{
         width: 100%;
     }
@@ -479,6 +481,9 @@ align-items: center;
 
 /* extra - narrow */
 @media (max-width: 450px) {
+    main {
+        flex-grow: 0.25;
+    }
     .main-header {
         height: 5.125rem;
         margin-bottom: 0rem;
@@ -495,6 +500,11 @@ align-items: center;
     .main-footer{
         position:unset;
     }
+
+.end-prod a, .end-prod button {
+    height: 125%;
+    width: 5.125rem;
+    }
     .meme-editor-container {
         flex-direction: column;
         height: 37rem;
@@ -510,10 +520,16 @@ align-items: center;
         width :90%;
         align-items: center;
     }
-    .meme-settings input {
-    height: 2.5remrem;
-[name="add-txt"]    }
+    .meme-settings input[name="add-txt"] {
+        height: 2.5rem;
+    }
+
     .meme-settings button {
         margin: 0.25rem;
+    }
+    .meme-editor-container .select-font {
+        width: 7rem;
+        padding: 0.25rem;
+        font-size: 1rem;
     }
 }
