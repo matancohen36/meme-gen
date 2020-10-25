@@ -182,7 +182,7 @@ function renderFocus() {
     gCtx.stroke();
     gCtx.beginPath();
     let measureText = gCtx.measureText(txt);
-    gCtx.rect(x - 2 - measureText.actualBoundingBoxLeft, y - size, measureText.width + 4, size + 10);
+    gCtx.rect(x - 2 - measureText.actualBoundingBoxLeft, y - size, measureText.width + 4, size + 20);
     gCtx.closePath();
 
 }
@@ -308,6 +308,7 @@ function startDrag(ev) {
     gCurrLineIdx = lineIdx;
     if (gCurrLineIdx === -1 && gMeme.lines.length > 1) gCurrLineIdx *= -1;
     if (gCurrLineIdx === -1 && gMeme.lines.length === 1) gCurrLineIdx = 0;
+    renderInput();
     renderCanvas();
     gIsDragging = true;
 }

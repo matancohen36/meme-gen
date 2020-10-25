@@ -24,7 +24,7 @@ function renderSavedMemes() {
     const memes = getMemesForDisplay();
     const strHtmls = memes.map(meme => {
         return `<div class="item" onclick="selectMeme"('${meme.id}')">
-                    <img class="item-img" src="${meme.url}"  />
+                    <img class="meme-img" src="${meme.url}"  />
                 </div>
         `
     })

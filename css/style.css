@@ -145,6 +145,15 @@ display:none;
 
 .item-img {
     width: 100%;
+    cursor: pointer;
+}
+.item-img:hover {
+    width: 100%;
+    cursor: pointer;
+    border: solid 0.25rem black;
+    opacity: 0.6;
+	-webkit-transform: scale3d(1,1,1);
+	transform :scale3d(1,1,1);
 }
 
 
@@ -246,9 +255,10 @@ label[for="stroke-change"] {
 /* footer */
 .main-footer {
     background-color: #ff8f03;
-    
-   
-    /* height: 6.25rem; */
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
     height: 5vh;
     align-items: center;
     justify-content: center;
@@ -312,7 +322,7 @@ label[for="stroke-change"] {
     display: flex;
     flex-direction: row;
     width: 60%;
-    justify-content: center;
+    align-items: center;
 }
 
 .end-prod * {
@@ -378,7 +388,7 @@ align-items: center;
 /* medium */
 @media (max-width: 940px) {
     main {
-        flex-grow: 0.75;
+        flex-grow: 0.5;
     }
     .end-prod{
         width: 100%;
@@ -497,9 +507,7 @@ align-items: center;
     margin: 1rem;
     
     }
-    .main-footer{
-        position:unset;
-    }
+   
 
 .end-prod a, .end-prod button {
     height: 125%;
@@ -513,15 +521,21 @@ align-items: center;
         width: 100%;
         height:70%
     }
+    .canvas-container{
+        height: 55%;
+    }
+    
     #my-canvas {
         width:85%;
     }
     .end-prod{
         width :90%;
-        align-items: center;
+        
+        justify-content: center;
     }
     .meme-settings input[name="add-txt"] {
         height: 2.5rem;
+        font-size: 1rem
     }
 
     .meme-settings button {
@@ -531,5 +545,8 @@ align-items: center;
         width: 7rem;
         padding: 0.25rem;
         font-size: 1rem;
+    }
+    .main-footer small{
+            padding: 1rem;
     }
 }
